@@ -6,10 +6,7 @@
 const request = require('request')
 const cheerio = require('cheerio')
 const striptags = require('striptags')
-const throttledQueue = require('throttled-queue')
 
-const perSecThrottle = throttledQueue(50, 1000)
-const perMinThrottle = throttledQueue(1200, 60 * 1000)
 const resultsPerPage = 10
 
 const googleScholarUrl = 'https://scholar.google.com/scholar?hl=en&q='
@@ -219,27 +216,19 @@ const scholarResultsCallback = (resolve, reject) => (error, response, html) => {
       prevUrl,
       next: () =>
         new Promise((resolve, reject) => {
-          perMinThrottle(() => {
-            perSecThrottle(() => {
-              const requestOptions = {
-                jar: true,
-                url: nextUrl,
-              }
-              request(requestOptions, scholarResultsCallback(resolve, reject))
-            })
-          })
+          const requestOptions = {
+            jar: true,
+            url: nextUrl,
+          }
+          request(requestOptions, scholarResultsCallback(resolve, reject))
         }),
       previous: () =>
         new Promise((resolve, reject) => {
-          perMinThrottle(() => {
-            perSecThrottle(() => {
-              const requestOptions = {
-                jar: true,
-                url: prevUrl,
-              }
-              request(requestOptions, scholarResultsCallback(resolve, reject))
-            })
-          })
+          const requestOptions = {
+            jar: true,
+            url: prevUrl,
+          }
+          request(requestOptions, scholarResultsCallback(resolve, reject))
         }),
     })
   }
@@ -247,15 +236,11 @@ const scholarResultsCallback = (resolve, reject) => (error, response, html) => {
 
 const search = query =>
   new Promise(function(resolve, reject) {
-    perMinThrottle(() => {
-      perSecThrottle(() => {
-        const requestOptions = {
-          jar: true,
-          url: encodeURI(googleScholarUrl + query),
-        }
-        request(requestOptions, scholarResultsCallback(resolve, reject))
-      })
-    })
+    const requestOptions = {
+      jar: true,
+      url: encodeURI(googleScholarUrl + query),
+    }
+    request(requestOptions, scholarResultsCallback(resolve, reject))
   })
 
 const all = query =>
