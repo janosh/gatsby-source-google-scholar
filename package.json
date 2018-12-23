@@ -1,14 +1,20 @@
 {
   "name": "gatsby-source-google-scholar",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Gatsby source plugin for pulling metadata of scientific publications from Google Scholar",
   "main": "gatsby-node.js",
   "author": "Janosh Riebesell",
   "license": "MIT",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
-    "request": "^2.88.0",
-    "striptags": "^3.1.1"
+    "request": "^2.88.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/janosh/gatsby-source-google-scholar"
+  },
+  "bugs": {
+    "url": "https://github.com/janosh/gatsby-source-google-scholar/issues"
   },
   "keywords": [
     "gatsby",
