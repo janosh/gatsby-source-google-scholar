@@ -1,6 +1,6 @@
-# gatsby-source-google-scholar
+# [gatsby-source-google-scholar](https://www.gatsbyjs.org/packages/gatsby-source-google-scholar)
 
-Gatsby source plugin for pulling metadata of scientific publications from Google Scholar.
+[Gatsby](https://www.gatsbyjs.org) source plugin that pulls metadata for scientific publications from [Google Scholar](https://scholar.google.com).
 
 ## Install
 
