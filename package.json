@@ -23,5 +23,10 @@
     "google-scholar",
     "scientific publications",
     "graphql"
-  ]
+  ],
+  "files": [
+    "gatsby-node.js",
+    "processor.js",
+    "scraper.js"
+  ],
 }
