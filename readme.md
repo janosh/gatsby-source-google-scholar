@@ -43,11 +43,13 @@ Grab relevant metadata with a GraphQL query.
           name
           url
         }
+        etAl
         abstract
         pdfUrl
-        citedCount
-        citedUrl
+        citedByCount
+        citedByUrl
         relatedUrl
+        allVersionsUrl
       }
     }
   }
@@ -69,14 +71,16 @@ This is what you get.
             "authors": [
               {
                 "name": "J Zinn-Justin",
-                "url": "https://scholar.google.com/citations?user=lpTL7HwAAAAJ&hl=en&oe=ASCII&oi=sra"
+                "url": "https://scholar.google.com/citations?user=lpTL7HwAAAAJ&amp;hl=en&amp;oe=ASCII&amp;oi=sra"
               }
             ],
-            "abstract": "Over the last twenty years quantum field theory has become not only the framework for the discussion of all fundamental interactions except gravity, but also for the understanding of second-order phase transitions in statistical mechanics. This advanced text is based on�…",
+            "abstract": "Over the last twenty years quantum field theory has become not only the framework for the discussion of all fundamental interactions except gravity, but also for the understanding of second-order phase transitions in statistical mechanics. This advanced text is based on …",
+            "etAl": false,
             "pdfUrl": null,
-            "citedCount": 5147,
-            "citedUrl": "https://scholar.google.com/scholar?cites=6453279145216378381&as_sdt=2005&sciodt=0,5&hl=en",
-            "relatedUrl": ""
+            "citedByCount": 5147,
+            "citedByUrl": "https://scholar.google.com/scholar?cites=6453279145216378381&as_sdt=2005&sciodt=0,5&hl=en&oe=ASCII",
+            "relatedUrl": "https://scholar.google.com/scholar?q=related:DQYPDzGnjlkJ:scholar.google.com/&scioq=quantum+field+theory&hl=en&oe=ASCII&as_sdt=0,5",
+            "allVersionsUrl": "https://scholar.google.com/scholar?cluster=6453279145216378381&hl=en&oe=ASCII&as_sdt=0,5"
           }
         },
         {
@@ -87,17 +91,18 @@ This is what you get.
             "authors": [
               {
                 "name": "ME Peskin",
-                "url": "https://scholar.google.com/citations?user=Tu8OVXoAAAAJ&hl=en&oe=ASCII&oi=sra"
+                "url": "https://scholar.google.com/citations?user=Tu8OVXoAAAAJ&amp;hl=en&amp;oe=ASCII&amp;oi=sra"
               }
             ],
-            "abstract": "Quantum field theory is a set of ideas and tools that combines three of the major themes of modern physics: the quantum theory, the field concept, and the principle of relativity. Today, most working physicists need to know some quantum field theory, and many others are�…",
+            "abstract": "Quantum field theory is a set of ideas and tools that combines three of the major themes of modern physics: the quantum theory, the field concept, and the principle of relativity. Today, most working physicists need to know some quantum field theory, and many others are …",
+            "etAl": false,
             "pdfUrl": "https://cds.cern.ch/record/257493/files/9780201503975_TOC.pdf",
-            "citedCount": 8489,
-            "citedUrl": "https://scholar.google.com/scholar?cites=16874761593160792884&as_sdt=2005&sciodt=0,5&hl=en",
-            "relatedUrl": ""
+            "citedByCount": 8489,
+            "citedByUrl": "https://scholar.google.com/scholar?cites=16874761593160792884&as_sdt=2005&sciodt=0,5&hl=en&oe=ASCII",
+            "relatedUrl": "https://scholar.google.com/scholar?q=related:NPvAPUMyL-oJ:scholar.google.com/&scioq=quantum+field+theory&hl=en&oe=ASCII&as_sdt=0,5",
+            "allVersionsUrl": "https://scholar.google.com/scholar?cluster=16874761593160792884&hl=en&oe=ASCII&as_sdt=0,5"
           }
-        },
-        ...
+        }
       ]
     }
   }
