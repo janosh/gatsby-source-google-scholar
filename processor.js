@@ -56,6 +56,8 @@ module.exports = processResults = (html, results) => {
     let authorHtml = html(el)
       .find('.gs_ri .gs_a')
       .html()
+      .replace('<b>', '')
+      .replace('</b>', '')
 
     if (authorHtml.includes('&#x2026;&#xFFFD;- ')) {
       authorHtml = authorHtml.split('&#x2026;&#xFFFD;- ')[0]
