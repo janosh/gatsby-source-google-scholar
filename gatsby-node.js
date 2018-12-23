@@ -1,5 +1,4 @@
 const scraper = require('./scraper')
-const uuid = require('uuid/v4')
 
 exports.sourceNodes = (
   { actions: { createNode }, createNodeId, createContentDigest },
@@ -8,7 +7,7 @@ exports.sourceNodes = (
   // helper function that processes a publication to match Gatsby's node structure
   const processPub = pub => ({
     ...pub,
-    id: pub.url ? createNodeId(pub.url) : uuid(),
+    id: createNodeId(pub.url),
     parent: null,
     children: [],
     internal: {
