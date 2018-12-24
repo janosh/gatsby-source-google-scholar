@@ -1,2 +1,6 @@
+# Dependencies
 node_modules
-yarn.lock
+
+# Gatsby directories
+.cache
+public
