@@ -17,9 +17,12 @@ exports.sourceNodes = (
     },
   })
 
-  return scraper.search(configOptions.query).then(res => {
-    res.results.forEach(result => {
-      createNode(processPub(result))
+  return scraper
+    .search(configOptions.query)
+    .then(response => {
+      response.results.forEach(result => {
+        createNode(processPub(result))
+      })
     })
-  })
+    .catch(error => console.error(error))
 }
