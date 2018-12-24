@@ -1,0 +1,18 @@
+{
+  "name": "gatsby-source-google-scholar-example",
+  "private": true,
+  "description": "Minimal working example for using gatsby-source-google-scholar",
+  "version": "1.0.0",
+  "author": "Janosh Riebesell",
+  "dependencies": {
+    "gatsby": "^2.0.75",
+    "react": "^16.6.3",
+    "react-dom": "^16.7.0"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-source-google-scholar",
+    "minimal example"
+  ],
+  "license": "MIT"
+}
