@@ -1,6 +1,6 @@
 {
   "name": "gatsby-source-google-scholar",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Gatsby source plugin for pulling metadata of scientific publications from Google Scholar",
   "main": "gatsby-node.js",
   "author": "Janosh Riebesell",
@@ -29,4 +29,15 @@
     "processor.js",
     "scraper.js"
   ],
+  "devDependencies": {
+    "jest": "^23.6.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "example"
+    ]
+  }
 }
