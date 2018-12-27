@@ -3,8 +3,11 @@ const scholarUrl = 'https://scholar.google.com'
 module.exports = processResults = (html, results) => {
   const processedResults = []
   results.each((i, el) => {
-    const res = {} // will have title, url, authors, abstract, citedCount, citedUrl, relatedUrl, pdfUrl
-    // filter out citations
+    // publication object: will receive title, url, authors (name, url?),
+    //   preEtAl, postEtAl, abstract, year, journal?, citedByCount
+    //   citedByUrl, relatedUrl, pdfUrl?
+    const res = {}
+    // filter out citations from results, want only actual publications
     if (
       html(el)
         .find('.gs_ri h3 span')
@@ -19,7 +22,6 @@ module.exports = processResults = (html, results) => {
     res.title = html(el)
       .find('.gs_ri h3')
       .text()
-      .trim()
     res.url = html(el)
       .find('.gs_ri h3 a')
       .attr('href')
@@ -53,20 +55,22 @@ module.exports = processResults = (html, results) => {
         .find('a:contains("All "):contains(" versions")')
         .attr('href')
 
-    let authorHtml = html(el)
+    const metaHtml = html(el)
       .find('.gs_ri .gs_a')
       .html()
-      .replace('<b>', '')
-      .replace('</b>', '')
-
-    if (authorHtml.includes('&#x2026;&#xFFFD;- ')) {
-      authorHtml = authorHtml.split('&#x2026;&#xFFFD;- ')[0]
-      res.etAl = true
-    } else {
-      authorHtml = authorHtml.split(' - ')[0]
-      res.etAl = false
-    }
-
+      .replace(/<\/?b>/g, '')
+    res.year = parseInt(metaHtml.match(/ (17|18|19|20)\d{2} /)[0])
+    res.journal = metaHtml.replace(
+      /.+- (.+?)?,? ?(?:17|18|19|20)\d{2} -.+/,
+      '$1'
+    )
+    res.preEtAl = metaHtml.startsWith('&#x2026;') ? true : false
+    res.postEtAl = metaHtml.includes('&#x2026;&#xFFFD;- ') ? true : false
+    // use regex negative lookahead to match everything up to the first " ?- " group
+    const authorHtml = metaHtml.replace(
+      /^(?:&#x2026;, )?((?:(?!(?:&#x2026;)?(?:&#xFFFD;)? ?- ).)+).*/,
+      '$1'
+    )
     res.authors = authorHtml.split(', ').map(str =>
       str.startsWith('<a href="')
         ? {
