@@ -5,6 +5,7 @@
 
 const request = require('request')
 const cheerio = require('cheerio')
+
 const processResults = require('./processor')
 
 const resultsPerPage = 10
@@ -49,7 +50,7 @@ const scholarResultsCallback = (resolve, reject) => (error, response, body) => {
       )
     }
   }
-  const html = cheerio.load(body, { decodeEntities: true })
+  const html = cheerio.load(body)
   const results = html('.gs_r.gs_or.gs_scl')
   if (!results.length)
     return reject(
@@ -83,16 +84,16 @@ const scholarResultsCallback = (resolve, reject) => (error, response, body) => {
     next: () =>
       new Promise((resolve, reject) => {
         const requestOptions = {
-          jar: true,
           url: nextUrl,
+          jar: true,
         }
         request(requestOptions, scholarResultsCallback(resolve, reject))
       }),
     previous: () =>
       new Promise((resolve, reject) => {
         const requestOptions = {
-          jar: true,
           url: prevUrl,
+          jar: true,
         }
         request(requestOptions, scholarResultsCallback(resolve, reject))
       }),
@@ -102,8 +103,8 @@ const scholarResultsCallback = (resolve, reject) => (error, response, body) => {
 const search = query =>
   new Promise((resolve, reject) => {
     const requestOptions = {
-      jar: true,
       url: encodeURI(googleScholarUrl + query),
+      jar: true, // remember cookies for future use
     }
     request(requestOptions, scholarResultsCallback(resolve, reject))
   })
