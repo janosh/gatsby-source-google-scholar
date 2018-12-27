@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-const IndexPage = ({ data }) => (
+const IndexPage = ({ data: { plugin, pubs } }) => (
   <div
     style={{ maxWidth: `900px`, margin: `0 auto`, fontFamily: `sans-serif` }}
   >
@@ -10,15 +10,19 @@ const IndexPage = ({ data }) => (
         gatsby-source-google-scholar
       </a>
     </h1>
-    {data.pubs.edges.map(({ node }) => (
+    <h2>Minimal Example Site</h2>
+    <h3>Results for query "{plugin.ops.query}"</h3>
+    {pubs.edges.map(({ node }) => (
       <div>
         <h3>
           <a href={node.url}>{node.title}</a>
         </h3>
         <p>{node.abstract}</p>
         <p>
-          {node.authors.map(author => (
-            <span style={{ marginRight: `1em` }}>
+          {node.preEtAl && <span>..., </span>}
+          {node.authors.map((author, index) => (
+            <span>
+              {!!index && ', '}
               {author.url ? (
                 <a href={author.url}>{author.name}</a>
               ) : (
@@ -26,10 +30,17 @@ const IndexPage = ({ data }) => (
               )}
             </span>
           ))}
+          {node.postEtAl && <span>, ...</span>}
+        </p>
+        <p>
           {node.pdfUrl && (
             <a href={node.pdfUrl} style={{ marginRight: `1em` }}>
               PDF
             </a>
+          )}
+          <span style={{ marginRight: `1em` }}>{node.year}</span>
+          {node.journal && (
+            <span style={{ marginRight: `1em` }}>{node.journal}</span>
           )}
           <a href={node.citedByUrl} style={{ marginRight: `1em` }}>
             Cited by {node.citedByCount}
@@ -52,6 +63,11 @@ export default IndexPage
 
 export const query = graphql`
   {
+    plugin: sitePlugin(name: { eq: "gatsby-source-google-scholar" }) {
+      ops: pluginOptions {
+        query
+      }
+    }
     pubs: allGoogleScholar {
       edges {
         node {
@@ -62,8 +78,11 @@ export const query = graphql`
             name
             url
           }
-          etAl
+          preEtAl
+          postEtAl
           abstract
+          year
+          journal
           pdfUrl
           citedByCount
           citedByUrl
