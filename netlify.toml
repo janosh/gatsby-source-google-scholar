@@ -1,0 +1,3 @@
+[build]
+  base    = "example"
+  command = "cd .. && yarn && cd example && gatsby build"
