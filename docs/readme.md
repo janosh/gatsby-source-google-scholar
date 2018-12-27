@@ -4,6 +4,8 @@
 
 ### [Demo site](https://gatsby-source-google-scholar.netlify.com)
 
+The source for demo site can be found in the [repo](https://github.com/janosh/gatsby-source-google-scholar)'s `/example` directory.
+
 ## Install
 
 ```sh
