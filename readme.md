@@ -65,7 +65,7 @@ Grab relevant metadata with a GraphQL query.
 
 `preEtAl` and `postEtAl` indicate whether Google used ellipsis to signal additional authors before or after the list of authors matching your query, as in this example:
 
-![pre- and post et Al.](pre-post-et-al.png)
+![pre- and post et Al.](https://i.imgur.com/W1IHjDR.png)
 
 This is what you get.
 
