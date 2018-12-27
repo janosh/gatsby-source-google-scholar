@@ -33,7 +33,8 @@
     "jest": "^23.6.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "example": "cd example && gatsby develop"
   },
   "jest": {
     "modulePathIgnorePatterns": [
