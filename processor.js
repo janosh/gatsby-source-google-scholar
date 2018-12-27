@@ -60,10 +60,9 @@ module.exports = processResults = (html, results) => {
       .html()
       .replace(/<\/?b>/g, '')
     res.year = parseInt(metaHtml.match(/ (17|18|19|20)\d{2} /)[0])
-    res.journal = metaHtml.replace(
-      /.+- (.+?)?,? ?(?:17|18|19|20)\d{2} -.+/,
-      '$1'
-    )
+    res.journal = metaHtml
+      .replace(/.+- (.+?)?,? ?(?:17|18|19|20)\d{2} -.+/, '$1')
+      .replace('&#xFFFD;&#x2026;', ' ...')
     res.preEtAl = metaHtml.startsWith('&#x2026;') ? true : false
     res.postEtAl = metaHtml.includes('&#x2026;&#xFFFD;- ') ? true : false
     // use regex negative lookahead to match everything up to the first " ?- " group
