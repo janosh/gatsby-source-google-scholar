@@ -5,6 +5,7 @@ module.exports = {
     author: `Janosh Riebesell`,
   },
   plugins: [
+    `gatsby-plugin-styled-components`,
     {
       // locally importing gatsby-source-google-scholar
       resolve: require.resolve(`..`),
