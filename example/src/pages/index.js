@@ -23,7 +23,7 @@ const IndexPage = ({ data: { plugin, pubs } }) => (
           gatsby-source-google-scholar
         </a>
       </h1>
-      <h2>Minimal Example Site</h2>
+      <h2>Example Site</h2>
       <h3>
         Results for querying{' '}
         {plugin.ops.queries.map((query, index) => (

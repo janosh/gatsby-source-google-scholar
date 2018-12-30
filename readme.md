@@ -14,7 +14,7 @@ yarn add gatsby-source-google-scholar
 
 ## Usage
 
-Include the plugin in your `gatsby-config` and specify your query.
+Include the plugin in your `gatsby-config` and specify your queries.
 
 ```js
 // gatsby-config.js
@@ -26,14 +26,14 @@ module.exports = {
     {
       resolve: `gatsby-source-google-scholar`,
       options: {
-        query: `albert einstein`,
+        queries: [`richard feynman`, `albert einstein`],
       },
     },
   ],
 }
 ```
 
-Grab relevant metadata with a GraphQL query.
+Grab the metadata you want with a GraphQL query. The below fragment shows everything that's available.
 
 ```graphql
 {
@@ -57,6 +57,26 @@ Grab relevant metadata with a GraphQL query.
         citedByUrl
         relatedUrl
         allVersionsUrl
+        internal {
+          query
+        }
+      }
+    }
+  }
+}
+```
+
+If you're only interested in the results for one of your queries, simply filter your results like so:
+
+```graphql
+{
+  pubs: allGoogleScholar(
+    filter: { internal: { query: { eq: "richard feynman" } } }
+  ) {
+    edges {
+      node {
+        title
+        url
       }
     }
   }

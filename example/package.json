@@ -1,7 +1,7 @@
 {
   "name": "gatsby-source-google-scholar-example",
   "private": true,
-  "description": "Minimal working example for using gatsby-source-google-scholar",
+  "description": "gatsby-source-google-scholar kitchen sink",
   "version": "1.0.0",
   "author": "Janosh Riebesell",
   "dependencies": {
