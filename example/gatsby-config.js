@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `gatsby-source-google-scholar-example`,
-    description: `Minimal working example for using gatsby-source-google-scholar.`,
+    description: `gatsby-source-google-scholar kitchen sink`,
     author: `Janosh Riebesell`,
   },
   plugins: [
@@ -10,7 +10,7 @@ module.exports = {
       // locally importing gatsby-source-google-scholar
       resolve: require.resolve(`..`),
       options: {
-        query: `albert einstein`,
+        queries: [`richard feynman`, `albert einstein`],
       },
     },
   ],

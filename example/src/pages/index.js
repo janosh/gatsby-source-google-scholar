@@ -25,10 +25,15 @@ const IndexPage = ({ data: { plugin, pubs } }) => (
       </h1>
       <h2>Minimal Example Site</h2>
       <h3>
-        Results for query{' '}
-        <a href={`https://scholar.google.com/scholar?q=${plugin.ops.query}`}>
-          {plugin.ops.query}
-        </a>
+        Results for querying{' '}
+        {plugin.ops.queries.map((query, index) => (
+          <>
+            {!!index && `, `}
+            <a href={`https://scholar.google.com/scholar?q=${query}`}>
+              {query}
+            </a>
+          </>
+        ))}
       </h3>
       <p>
         <a href="https://github.com/janosh/gatsby-source-google-scholar">
@@ -123,7 +128,7 @@ export const query = graphql`
   {
     plugin: sitePlugin(name: { eq: "gatsby-source-google-scholar" }) {
       ops: pluginOptions {
-        query
+        queries
       }
     }
     pubs: allGoogleScholar {
