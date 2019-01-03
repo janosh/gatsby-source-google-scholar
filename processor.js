@@ -80,6 +80,11 @@ module.exports = processResults = (html, results) => {
           }
         : { name: str, url: undefined }
     )
+    Object.keys(res).forEach(key => {
+      if (typeof res[key] === `string`) {
+        res[key] = res[key].replace(/&.{4,6};/g, ``)
+      }
+    })
 
     processedResults.push(res)
   })
