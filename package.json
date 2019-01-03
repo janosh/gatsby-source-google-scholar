@@ -35,7 +35,8 @@
   },
   "scripts": {
     "test": "jest",
-    "example": "cd example && gatsby develop"
+    "dev": "cd example && gatsby develop",
+    "build": "cd example && gatsby build"
   },
   "jest": {
     "modulePathIgnorePatterns": [
