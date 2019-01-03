@@ -22,12 +22,13 @@ exports.sourceNodes = async (
     },
   })
 
-  await Promise.all(ops.queries.map(query => scraper.search(query))).then(
-    responses =>
+  await Promise.all(ops.queries.map(query => scraper.search(query)))
+    .then(responses =>
       responses.forEach((response, index) =>
         response.results.forEach(result =>
           createNode(processPub(result, ops.queries[index]))
         )
       )
-  )
+    )
+    .catch(console.error)
 }
