@@ -1,4 +1,6 @@
-<img src="https://svgshare.com/i/AKz.svg" width="500px" align="center" alt="gatsby-source-google-scholar">
+<p align="center">
+<img src="https://svgshare.com/i/AKz.svg" width="500px" alt="gatsby-source-google-scholar">
+</p>
 
 # [gatsby-source-google-scholar](https://www.gatsbyjs.org/packages/gatsby-source-google-scholar)
 
