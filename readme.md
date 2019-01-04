@@ -1,10 +1,6 @@
-<div align="center">
-
-![gatsby-source-google-scholar](https://svgshare.com/i/AKz.svg =500x)
+<img src="https://svgshare.com/i/AKz.svg" width="500px" align="center" alt="gatsby-source-google-scholar">
 
 # [gatsby-source-google-scholar](https://www.gatsbyjs.org/packages/gatsby-source-google-scholar)
-
-</div>
 
 [Gatsby](https://www.gatsbyjs.org) source plugin that pulls metadata for scientific publications from [Google Scholar](https://scholar.google.com).
 
