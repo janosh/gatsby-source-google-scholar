@@ -1,0 +1,21 @@
+{
+  "name": "Gatsby Google Scholar",
+  "title": "Gatsby Google Scholar: use scientific publications in Gatsby",
+  "description": "Use gatsby-plugin-google-scholar: a Gatsby source plugin for pulling metadata of scientific publications from Google Scholar",
+  "url": "https://gatsby-source-google-scholar.netlify.com/",
+  "twitter": "@gatsbyjs",
+  "img": "",
+  "org": {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": "GatsbyJS",
+    "url": "https://gatsbyjs.org/",
+    "logo": "https://www.gatsbyjs.org/static/gatsby-icon-4a9773549091c227cd2eb82ccd9c5e3a.png",
+    "sameAs": [
+      "https://twitter.com/gatsbyjs",
+      "https://github.com/gatsbyjs",
+      "https://www.instagram.com/gatsbyjs",
+      "https://www.youtube.com/channel/UCjnp770qk7ujOq8Q9wiC82w"
+    ]
+  }
+}
