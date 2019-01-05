@@ -2,19 +2,21 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import Highlight from 'react-highlight.js'
 
+import theme from './theme'
+
 const Title = styled.h1`
   font-weight: 900;
   text-align: center;
-  color: #0c1e29;
+  color: ${theme.grey.black};
   margin: 2rem 0 0.5rem;
 `
 
 const Desc = styled.p`
-  font-family: Menlo, monospace;
+  font-family: ${theme.fonts.mono};
   font-size: 18px;
   font-weight: 500;
   text-align: center;
-  color: #4e616c;
+  color: ${theme.grey.dark};
   max-width: 32rem;
   margin: 0 auto;
 `
@@ -27,14 +29,14 @@ const FlexRow = styled.div`
 
 const Link = styled.a`
   margin: 0 1rem;
-  background-color: #5978f330;
-  color: #5978f3;
+  background-color: ${theme.indigo.default}30;
+  color: ${theme.indigo.default};
   padding: 4px 8px;
   font-weight: 700;
   border-radius: 4px;
 
   &:hover {
-    background-color: #405dcf40;
+    background-color: ${theme.indigo.dark}40;
   }
 `
 
@@ -48,12 +50,12 @@ const CodeContainer = styled.div`
 `
 
 const Pre = styled.pre`
-  background-color: #011627;
-  color: #fff;
+  background-color: ${theme.grey.darker};
+  color: ${theme.grey.white};
   border-radius: 8px;
   max-width: 48rem;
   margin: 2rem auto;
-  font-family: SFMono-Regular, 'Roboto Mono', Menlo, monospace;
+  font-family: ${theme.fonts.mono};
   font-size: 18px;
   padding: 24px;
   overflow-wrap: normal;
@@ -63,15 +65,15 @@ const Pre = styled.pre`
 
 const Code = styled.code`
   .hljs-comment {
-    color: #ccc;
+    color: ${theme.blueGrey.light};
   }
 
   .hljs-built_in {
-    color: #c792ea;
+    color: ${theme.purple.default};
   }
 
   .hljs-string {
-    color: #addb67;
+    color: ${theme.green.default};
   }
 `
 

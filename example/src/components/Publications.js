@@ -2,6 +2,7 @@ import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 
+import theme from './theme'
 import Icon from './Icon'
 
 const Grid = styled.div`
@@ -19,21 +20,20 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.0625);
+  box-shadow: ${theme.shadows.default};
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    box-shadow: 0 18px 35px 0 rgba(42, 51, 83, 0.12),
-      0 8px 15px rgba(0, 0, 0, 0.06);
+    box-shadow: ${theme.shadows.hover};
     transform: translateY(-2px);
   }
 `
 
 const Name = styled.h3`
-  background-color: #f3f7f9;
-  color: #23446b;
+  background-color: ${theme.grey.lighter};
+  color: ${theme.grey.darker};
   font-size: 1.125rem;
   text-align: center;
   font-weight: 700;
@@ -44,13 +44,13 @@ const Name = styled.h3`
 const Content = styled.div`
   flex: 1;
   padding: 0 1rem;
-  color: #0c1e29;
+  color: ${theme.grey.black};
 `
 
 const Meta = styled.div`
   padding: 0.5rem 1rem 0;
-  border-top: 1px solid #dfe4e7;
-  color: #4e616c;
+  border-top: 1px solid ${theme.grey.light};
+  color: ${theme.grey.dark};
 `
 
 const DetailsGrid = styled.div`
@@ -77,7 +77,6 @@ const IconWrapper = styled.span`
 
 const Label = styled.span`
   font-weight: 600;
-  /* color: #0c1e29; */
 `
 
 const truncateString = (str, num) =>
