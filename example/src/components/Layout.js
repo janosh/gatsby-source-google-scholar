@@ -18,6 +18,7 @@ export default props => (
       <meta name="viewport" content="width=device-width,initial-scale=1" />
       <meta name="format-detection" content="telephone=no" />
       <meta name="theme-color" content={theme.indigo.default} />
+
       {meta([
         { name: 'description', content: description },
         { name: 'twitter:card', content: 'summary_large_image' },

@@ -4,11 +4,20 @@ import Highlight from 'react-highlight.js'
 
 import theme from './theme'
 
+const LogoContainer = styled.div`
+  margin: 2rem auto 0;
+  width: 64px;
+`
+
+const Logo = styled.img`
+  max-width: 100%;
+`
+
 const Title = styled.h1`
   font-weight: 900;
   text-align: center;
   color: ${theme.grey.black};
-  margin: 2rem 0 0.5rem;
+  margin: 0 0 0.5rem;
 `
 
 const Desc = styled.p`
@@ -88,6 +97,9 @@ const snippet = `{
 
 export default () => (
   <Fragment>
+    <LogoContainer>
+      <Logo src="/favicon.png" />
+    </LogoContainer>
     <Title>gatsby-source-google-scholar</Title>
     <Desc>
       Gatsby source plugin for pulling metadata of scientific publications from

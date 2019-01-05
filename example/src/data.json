@@ -4,7 +4,7 @@
   "description": "Use gatsby-plugin-google-scholar: a Gatsby source plugin for pulling metadata of scientific publications from Google Scholar",
   "url": "https://gatsby-source-google-scholar.netlify.com/",
   "twitter": "@gatsbyjs",
-  "img": "",
+  "img": "social.png",
   "org": {
     "@context": "http://schema.org",
     "@type": "Organization",
