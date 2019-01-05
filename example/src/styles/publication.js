@@ -9,24 +9,27 @@ import { Versions } from 'styled-icons/octicons/Versions'
 import { Newspaper } from 'styled-icons/icomoon/Newspaper'
 
 export default styled.div`
-  padding: 0 1em;
+  padding: 1em;
   background: ${props => props.theme.white};
   border-radius: 0.5em;
   box-shadow: 0.1em 0.1em 1em ${props => props.theme.lightGray};
+  display: grid;
+  grid-gap: 1em;
   overflow: hidden;
+  word-break: break-word;
   h3 {
-    padding-bottom: 0.8em;
     border-bottom: 4px solid ${props => props.theme.orange};
     background: ${props => props.theme.darkPurple};
-    margin: 0 -1em;
+    margin: -1em -1em 0;
     padding: 1em;
+    height: max-content;
     a {
-      color: ${props => props.theme.veryLightGray};
+      color: ${props => props.theme.lighterGray};
     }
   }
 `
 
-export const MetaData = styled.p`
+export const MetaData = styled.div`
   display: flex;
   flex-wrap: wrap;
   > :not(:last-child) {

@@ -67,8 +67,8 @@ const IndexPage = ({ data: { plugin, pubs } }) => (
           <h3>
             <a href={node.url}>{node.title}</a>
           </h3>
-          <p>{node.abstract}</p>
-          <p>
+          {node.abstract}
+          <div>
             <Authors count={node.authors.length} />
             {node.preEtAl && <span>..., </span>}
             {node.authors.map((author, index) => (
@@ -82,7 +82,13 @@ const IndexPage = ({ data: { plugin, pubs } }) => (
               </span>
             ))}
             {node.postEtAl && <span>, ...</span>}
-          </p>
+          </div>
+          {node.journal && (
+            <span>
+              <Journal />
+              {node.journal}
+            </span>
+          )}
           <MetaData>
             {node.pdfUrl && (
               <a href={node.pdfUrl}>
@@ -90,17 +96,10 @@ const IndexPage = ({ data: { plugin, pubs } }) => (
                 PDF
               </a>
             )}
-
             <span>
               <Year />
               {node.year}
             </span>
-            {node.journal && (
-              <span>
-                <Journal />
-                {node.journal}
-              </span>
-            )}
             <a href={node.citedByUrl}>
               <Citations />
               Cited by {node.citedByCount}
