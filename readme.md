@@ -6,9 +6,9 @@
 
 [Gatsby](https://www.gatsbyjs.org) source plugin that pulls metadata for scientific publications from [Google Scholar](https://scholar.google.com).
 
-### [Demo site](https://gatsby-source-google-scholar.netlify.com)
+### [Demo](https://gatsby-source-google-scholar.netlify.com)
 
-The source for demo site can be found in the [repo](https://github.com/janosh/gatsby-source-google-scholar)'s `/example` directory.
+The source for this demo can be found in the [repo](https://github.com/janosh/gatsby-source-google-scholar)'s `example` directory.
 
 ## Install
 
