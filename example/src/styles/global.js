@@ -3,6 +3,7 @@ import React from 'react'
 import { ThemeProvider, createGlobalStyle } from 'styled-components'
 
 import theme from './theme'
+import Prism from './prism'
 
 const GlobalStyles = createGlobalStyle`
   body {
@@ -22,6 +23,7 @@ export default ({ children }) => (
   <ThemeProvider theme={theme}>
     <>
       <GlobalStyles />
+      <Prism />
       {children}
     </>
   </ThemeProvider>
