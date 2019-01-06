@@ -6,14 +6,14 @@ import { Github } from 'styled-icons/icomoon/Github'
 export default styled.header`
   text-align: center;
   margin-bottom: 2em;
-  p {
-    display: flex;
-    flex-wrap: wrap;
+  ul {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+    grid-gap: 1em;
     justify-content: center;
     align-items: center;
-    > * + * {
-      margin-left: 1.5em;
-    }
+    padding: 0;
   }
 `
 
@@ -23,7 +23,9 @@ export const NPM = styled(Npm).attrs({
 
 export const GitHub = styled(Github).attrs({
   size: `2em`,
-})``
+})`
+  vertical-align: 0.15em;
+`
 
 const GatsbyLogo = props => (
   <svg viewBox="0 0 28 28" {...props}>
