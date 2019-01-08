@@ -9,6 +9,6 @@ export default () => (
   <Layout>
     <Header />
     <Publications />
-    <Docs />w
+    <Docs />
   </Layout>
 )
