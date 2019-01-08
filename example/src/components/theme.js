@@ -16,12 +16,26 @@ export default {
     black: '#0c1e29',
     darker: '#23333d',
     dark: '#4e616c',
+    default: '#b8c2cc',
     light: '#dfe4e7',
     lighter: '#f3f7f9',
     white: '#ffffff'
   },
+  red: {
+    default: '#e3342f'
+  },
+  orange: {
+    default: '#F6993F'
+  },
   green: {
     default: '#b6e29c'
+  },
+  teal: {
+    default: '#4DC0B5'
+  },
+  blue: {
+    default: '#3490dc',
+    lightest: '#EFF8FF'
   },
   indigo: {
     dark: '#405dcf',
@@ -29,5 +43,8 @@ export default {
   },
   purple: {
     default: '#9561E2'
+  },
+  pink: {
+    default: '#F66D9B'
   }
 }

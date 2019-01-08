@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
 import styled from 'styled-components'
-import Highlight from 'react-highlight.js'
 
 import theme from './theme'
+import markdownStyle from './markdownStyle'
+import Icon from './Icon'
 
 const LogoContainer = styled.div`
   margin: 2rem auto 0;
@@ -56,42 +57,56 @@ const CodeContainer = styled.div`
   @media (min-width: 32em) {
     display: block;
   }
-`
 
-const Pre = styled.pre`
-  background-color: ${theme.grey.darker};
-  color: ${theme.grey.white};
-  border-radius: 8px;
-  max-width: 48rem;
-  margin: 2rem auto;
-  font-family: ${theme.fonts.mono};
-  font-size: 18px;
-  padding: 24px;
-  overflow-wrap: normal;
-  word-break: break-word;
-  overflow-x: auto;
-`
+  ${markdownStyle}
 
-const Code = styled.code`
-  .hljs-comment {
-    color: ${theme.blueGrey.light};
-  }
+  pre {
+    background-color: ${theme.grey.darker};
+    color: ${theme.grey.white};
+    border-radius: 8px;
+    max-width: 48rem;
+    margin: 2rem auto;
+    font-family: ${theme.fonts.mono};
+    font-size: 18px;
+    padding: 24px;
+    overflow-wrap: normal;
+    word-break: break-word;
+    overflow-x: auto;
 
-  .hljs-built_in {
-    color: ${theme.purple.default};
-  }
-
-  .hljs-string {
-    color: ${theme.green.default};
+    code {
+      background-color: transparent;
+      color: inherit;
+    }
   }
 `
 
-const snippet = `{
-  // locally importing gatsby-source-google-scholar
-  resolve: require.resolve(\`..\`),
-  options: {
-    queries: [\`richard feynman\`, \`albert einstein\`],
-  },
+const LearnMore = styled.div`
+  max-width: 16rem;
+  margin: 0 auto;
+  text-align: center;
+  color: ${theme.grey.default};
+  cursor: pointer;
+
+  &:hover {
+    color: ${theme.grey.dark};
+  }
+`
+
+const CTA = styled.p`
+  margin: 0;
+  color: inherit;
+  font-size: 24px;
+  font-weight: 700;
+`
+
+const snippet = `module.exports = {
+  ...
+    {
+      resolve: \`gatsby-source-google-scholar\`,
+      options: {
+        queries: [\`richard feynman\`, \`albert einstein\`],
+      },
+    },
 }
 `
 
@@ -114,11 +129,15 @@ export default () => (
       </Link>
     </FlexRow>
     <CodeContainer>
-      <Highlight language="javascript" innerHtml={true}>
-        <Pre>
-          <Code>{snippet}</Code>
-        </Pre>
-      </Highlight>
+      <pre>
+        <code>{snippet}</code>
+      </pre>
     </CodeContainer>
+    <a href="#docs">
+      <LearnMore>
+        <CTA>Learn more</CTA>
+        <Icon glyph="down-caret" size={48} />
+      </LearnMore>
+    </a>
   </Fragment>
 )
