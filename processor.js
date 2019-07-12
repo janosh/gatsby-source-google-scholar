@@ -3,9 +3,24 @@ const scholarUrl = 'https://scholar.google.com'
 module.exports = processResults = (html, results) => {
   const processedResults = []
   results.each((i, el) => {
-    // publication object: will receive title, url, authors (name, url?),
-    //   preEtAl, postEtAl, abstract, year, journal?, citedByCount
-    //   citedByUrl, relatedUrl, pdfUrl?
+    // shape of publication object (question marks indicate data that may be missing):
+    // {
+    //   title,
+    //   url,
+    //   authors: {
+    //     name,
+    //     url?,
+    //   },
+    //   preEtAl,
+    //   postEtAl,
+    //   abstract,
+    //   year,
+    //   journal?,
+    //   citedByCount,
+    //   citedByUrl,
+    //   relatedUrl,
+    //   pdfUrl?,
+    // }
     const res = {}
     // filter out citations from results, want only actual publications
     if (
