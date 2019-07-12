@@ -6,16 +6,19 @@
   "author": "Janosh Riebesell",
   "license": "MIT",
   "homepage": "https://gatsby-source-google-scholar.netlify.com",
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.3",
-    "request": "^2.88.0"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/janosh/gatsby-source-google-scholar"
   },
   "bugs": {
     "url": "https://github.com/janosh/gatsby-source-google-scholar/issues"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0"
   },
   "keywords": [
     "gatsby",
@@ -30,9 +33,6 @@
     "processor.js",
     "scraper.js"
   ],
-  "devDependencies": {
-    "jest": "^24.8.0"
-  },
   "scripts": {
     "test": "jest",
     "dev": "cd example && gatsby develop",
