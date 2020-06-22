@@ -27,7 +27,7 @@ export const GitHub = styled(Github).attrs({
   vertical-align: 0.15em;
 `
 
-const GatsbyLogo = props => (
+const GatsbyLogo = (props) => (
   <svg viewBox="0 0 28 28" {...props}>
     <path
       d="m25 14h-7v2h4.8c-.7 3-2.9 5.5-5.8 6.5l-11.5-11.5c1.2-3.5 4.6-6 8.5-6 3 0 5.7 1.5 7.4 3.8l1.5-1.3c-2-2.7-5.2-4.5-8.9-4.5-5.2 0-9.6 3.7-10.7 8.6l13.2 13.2c4.8-1.2 8.5-5.6 8.5-10.8z"

@@ -22,7 +22,7 @@ const IndexPage = ({ data: { plugin, pubs, readme } }) => {
   docs = `<h1 id="docs">Docs</h1><h2>Install</h2>` + docs
   const queries = plugin.ops.queries
     .map(
-      query =>
+      (query) =>
         `<a href="https://scholar.google.com/scholar?q=${query}">${query}</a>`
     )
     .join(`, `)
@@ -65,18 +65,18 @@ const IndexPage = ({ data: { plugin, pubs, readme } }) => {
         />
       </PageTitle>
       <Grid>
-        {pubs.edges.map(({ node }) => (
+        {pubs.nodes.map((pub) => (
           <Publication>
             <h3>
-              <a href={node.url}>{node.title}</a>
+              <a href={pub.url}>{pub.title}</a>
             </h3>
-            {node.abstract}
+            {pub.abstract}
             <div>
-              <Authors count={node.authors.length} />
-              {node.preEtAl && <span>..., </span>}
-              {node.authors.map((author, index) => (
+              <Authors count={pub.authors.length} />
+              {pub.preEtAl && <span>..., </span>}
+              {pub.authors.map((author, index) => (
                 <span>
-                  {!!index && ', '}
+                  {index > 0 && ', '}
                   {author.url ? (
                     <a href={author.url}>{author.name}</a>
                   ) : (
@@ -84,35 +84,35 @@ const IndexPage = ({ data: { plugin, pubs, readme } }) => {
                   )}
                 </span>
               ))}
-              {node.postEtAl && <span>, ...</span>}
+              {pub.postEtAl && <span>, ...</span>}
             </div>
-            {node.journal && (
+            {pub.journal && (
               <span>
                 <Journal />
-                {node.journal}
+                {pub.journal}
               </span>
             )}
             <MetaData>
-              {node.pdfUrl && (
-                <a href={node.pdfUrl}>
+              {pub.pdfUrl && (
+                <a href={pub.pdfUrl}>
                   <PDF />
                   PDF
                 </a>
               )}
               <span>
                 <Year />
-                {node.year}
+                {pub.year}
               </span>
-              <a href={node.citedByUrl}>
+              <a href={pub.citedByUrl}>
                 <Citations />
-                Cited by {node.citedByCount}
+                Cited by {pub.citedByCount}
               </a>
-              <a href={node.relatedUrl}>
+              <a href={pub.relatedUrl}>
                 <Related />
                 Related papers
               </a>
-              {node.allVersionsUrl && (
-                <a href={node.allVersionsUrl}>
+              {pub.allVersionsUrl && (
+                <a href={pub.allVersionsUrl}>
                   <AllVersions />
                   All versions
                 </a>
@@ -136,26 +136,24 @@ export const query = graphql`
       }
     }
     pubs: allGoogleScholar {
-      edges {
-        node {
-          id
-          title
+      nodes {
+        id
+        title
+        url
+        authors {
+          name
           url
-          authors {
-            name
-            url
-          }
-          preEtAl
-          postEtAl
-          abstract
-          year
-          journal
-          pdfUrl
-          citedByCount
-          citedByUrl
-          relatedUrl
-          allVersionsUrl
         }
+        preEtAl
+        postEtAl
+        abstract
+        year
+        journal
+        pdfUrl
+        citedByCount
+        citedByUrl
+        relatedUrl
+        allVersionsUrl
       }
     }
     readme: file(name: { eq: "readme" }) {

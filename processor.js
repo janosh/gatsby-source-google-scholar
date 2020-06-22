@@ -1,91 +1,82 @@
+// shape of publication object `res` (question marks indicate data that may be missing):
+// {
+//   title,
+//   url,
+//   authors: {
+//     name,
+//     url?,
+//   },
+//   preEtAl,
+//   postEtAl,
+//   abstract,
+//   year,
+//   journal?,
+//   citedByCount,
+//   citedByUrl,
+//   relatedUrl,
+//   pdfUrl?,
+// }
+
 const scholarUrl = 'https://scholar.google.com'
 
 module.exports = processResults = (html, results) => {
-  const processedResults = []
+  const processedPubs = []
+
   results.each((i, el) => {
-    // shape of publication object (question marks indicate data that may be missing):
-    // {
-    //   title,
-    //   url,
-    //   authors: {
-    //     name,
-    //     url?,
-    //   },
-    //   preEtAl,
-    //   postEtAl,
-    //   abstract,
-    //   year,
-    //   journal?,
-    //   citedByCount,
-    //   citedByUrl,
-    //   relatedUrl,
-    //   pdfUrl?,
-    // }
-    const res = {}
-    // filter out citations from results, want only actual publications
-    if (
-      html(el)
-        .find('.gs_ri h3 span')
-        .first()
-        .text()
-        .includes('CITATION')
-    )
+    const pub = {}
+    // filter out citations from results, we only care about actual publications
+    if (html(el).find('.gs_ri h3 span').first().text().includes('CITATION'))
       return
-    html(el)
-      .find('.gs_ri h3 span')
-      .remove()
-    res.title = html(el)
-      .find('.gs_ri h3')
-      .text()
-    res.url = html(el)
-      .find('.gs_ri h3 a')
-      .attr('href')
-    res.abstract = html(el)
+    html(el).find('.gs_ri h3 span').remove()
+
+    pub.title = html(el).find('.gs_ri h3').text()
+
+    pub.url = html(el).find('.gs_ri h3 a').attr('href')
+
+    pub.abstract = html(el)
       .find('.gs_ri .gs_rs')
       .text()
       .replace('�', ' ')
       .replace('\n', '')
-    res.pdfUrl = html(el)
-      .find('a:contains("[PDF]")')
-      .attr('href')
-    res.citedByUrl =
-      scholarUrl +
-      html(el)
-        .find('a:contains("Cited by")')
-        .attr('href')
-    res.citedByCount = parseInt(
-      html(el)
-        .find('a:contains("Cited by")')
-        .text()
-        .replace('Cited by ', '')
+
+    pub.pdfUrl = html(el).find('a:contains("[PDF]")').attr('href')
+
+    pub.citedByUrl =
+      scholarUrl + html(el).find('a:contains("Cited by")').attr('href')
+
+    pub.citedByCount = parseInt(
+      html(el).find('a:contains("Cited by")').text().replace('Cited by ', '')
     )
-    res.relatedUrl =
+
+    pub.relatedUrl =
+      scholarUrl + html(el).find('a:contains("Related articles")').attr('href')
+
+    pub.allVersionsUrl =
       scholarUrl +
-      html(el)
-        .find('a:contains("Related articles")')
-        .attr('href')
-    res.allVersionsUrl =
-      scholarUrl +
-      html(el)
-        .find('a:contains("All "):contains(" versions")')
-        .attr('href')
+      html(el).find('a:contains("All "):contains(" versions")').attr('href')
 
     const metaHtml = html(el)
       .find('.gs_ri .gs_a')
       .html()
       .replace(/<\/?b>/g, '')
-    res.year = parseInt(metaHtml.match(/ (17|18|19|20)\d{2} /)[0])
-    res.journal = metaHtml
+
+    pub.year = parseInt(metaHtml.match(/ (17|18|19|20)\d{2} /)[0])
+
+    pub.journal = metaHtml
       .replace(/.+- (.+?)?,? ?(?:17|18|19|20)\d{2} -.+/, '$1')
       .replace('&#xFFFD;&#x2026;', ' ...')
-    res.preEtAl = metaHtml.startsWith('&#x2026;') ? true : false
-    res.postEtAl = metaHtml.includes('&#x2026;&#xFFFD;- ') ? true : false
+
+    pub.preEtAl = metaHtml.startsWith('&#x2026;') ? true : false
+
+    pub.postEtAl = metaHtml.includes('&#x2026;&#xFFFD;- ') ? true : false
+
     // use regex negative lookahead to match everything up to the first " ?- " group
     const authorHtml = metaHtml.replace(
       /^(?:&#x2026;, )?((?:(?!(?:&#x2026;)?(?:&#xFFFD;)? ?- ).)+).*/,
       '$1'
     )
-    res.authors = authorHtml.split(', ').map(str =>
+
+    pub.authors = authorHtml.split(', ').map((str) =>
       str.startsWith('<a href="')
         ? {
             name: str.substring(str.indexOf('">') + 2, str.indexOf('</a>')),
@@ -95,13 +86,15 @@ module.exports = processResults = (html, results) => {
           }
         : { name: str, url: undefined }
     )
-    Object.keys(res).forEach(key => {
-      if (typeof res[key] === `string`) {
-        res[key] = res[key].replace(/&.{4,6};/g, ``)
+
+    Object.keys(pub).forEach((key) => {
+      if (typeof pub[key] === `string`) {
+        pub[key] = pub[key].replace(/&.{4,6};/g, ``)
       }
     })
 
-    processedResults.push(res)
+    processedPubs.push(pub)
   })
-  return processedResults
+
+  return processedPubs
 }

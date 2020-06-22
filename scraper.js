@@ -43,9 +43,7 @@ const scholarResultsCallback = (resolve, reject) => (error, response, body) => {
     } else {
       return reject(
         new Error(
-          `Expected status code 200 on Google Scholar http response, but got ${
-            response.statusCode
-          }.`
+          `Expected status code 200 on Google Scholar http response, but got ${response.statusCode}.`
         )
       )
     }
@@ -56,21 +54,14 @@ const scholarResultsCallback = (resolve, reject) => (error, response, body) => {
     return reject(
       new Error(`
         Your Google Scholar query returned no results. Google may
-        be rate-limiting your requests. You may try to visit 
+        be rate-limiting your requests. You may try to visit
         scholar.google.com and solve a captcha to unblock your IP or use a VPN.
       `)
     )
 
-  const nextUrl =
-    scholarUrl +
-    html('.gs_ico_nav_next')
-      .parent()
-      .attr('href')
+  const nextUrl = scholarUrl + html('.gs_ico_nav_next').parent().attr('href')
   const prevUrl =
-    scholarUrl +
-    html('.gs_ico_nav_previous')
-      .parent()
-      .attr('href')
+    scholarUrl + html('.gs_ico_nav_previous').parent().attr('href')
 
   const resultsCountString = html('#gs_ab_md').text()
   const matches = resultCountRegex.exec(resultsCountString)
@@ -100,7 +91,7 @@ const scholarResultsCallback = (resolve, reject) => (error, response, body) => {
   })
 }
 
-const search = query =>
+const search = (query) =>
   new Promise((resolve, reject) => {
     const requestOptions = {
       url: encodeURI(googleScholarUrl + query),
@@ -109,8 +100,8 @@ const search = query =>
     request(requestOptions, scholarResultsCallback(resolve, reject))
   })
 
-const all = query =>
-  search(query).then(results => {
+const all = (query) =>
+  search(query).then((results) => {
     // n results but have 10 already so n - 10 results on following pages
     const remainingResults = results.count - results.results.length
     if (remainingResults > 0) {
@@ -120,10 +111,10 @@ const all = query =>
           .fill()
           .map((el, i) =>
             search(query + '&start=' + (i + 1) * resultsPerPage).then(
-              laterPages => laterPages.results
+              (laterPages) => laterPages.results
             )
           )
-      ).then(remainingResults => {
+      ).then((remainingResults) => {
         const allResults = results.results.concat(
           remainingResults.reduce((acc, res) => acc.concat(res))
         )

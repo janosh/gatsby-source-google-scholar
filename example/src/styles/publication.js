@@ -10,21 +10,21 @@ import { Newspaper } from 'styled-icons/icomoon/Newspaper'
 
 export default styled.div`
   padding: 1em;
-  background: ${props => props.theme.white};
+  background: ${(props) => props.theme.white};
   border-radius: 0.5em;
-  box-shadow: 0.1em 0.1em 1em ${props => props.theme.lightGray};
+  box-shadow: 0.1em 0.1em 1em ${(props) => props.theme.lightGray};
   display: grid;
   grid-gap: 1em;
   overflow: hidden;
   word-break: break-word;
   h3 {
-    border-bottom: 4px solid ${props => props.theme.orange};
-    background: ${props => props.theme.darkPurple};
+    border-bottom: 4px solid ${(props) => props.theme.orange};
+    background: ${(props) => props.theme.darkPurple};
     margin: -1em -1em 0;
     padding: 1em;
     height: max-content;
     a {
-      color: ${props => props.theme.lighterGray};
+      color: ${(props) => props.theme.lighterGray};
     }
   }
 `
@@ -38,10 +38,10 @@ export const MetaData = styled.div`
 `
 
 const orange = css`
-  color: ${props => props.theme.orange};
+  color: ${(props) => props.theme.orange};
 `
 
-export const Authors = styled(Person).attrs(props => ({
+export const Authors = styled(Person).attrs((props) => ({
   size: `1em`,
   as: props.count > 1 ? People : ``,
 }))`

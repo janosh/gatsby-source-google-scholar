@@ -11,11 +11,11 @@ const GlobalStyles = createGlobalStyle`
     padding: 4em;
     font-family: sans-serif;
     max-width: 1300px;
-    background: ${props => props.theme.lighterGray};
+    background: ${(props) => props.theme.lighterGray};
   }
   a {
     text-decoration: none;
-    color: ${props => props.theme.darkBlue};
+    color: ${(props) => props.theme.darkBlue};
   }
 `
 
