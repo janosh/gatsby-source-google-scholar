@@ -6,9 +6,9 @@
 
 [Gatsby](https://gatsbyjs.org) source plugin for pulling metadata on scientific publications from [Google Scholar](https://scholar.google.com).
 
-## [Demo](https://gatsby-source-google-scholar.netlify.com)
+## [Live Demo](https://gatsby-source-google-scholar.netlify.com)
 
-For the demo site source demo see the repo's [`example` directory](https://github.com/janosh/gatsby-source-google-scholar/tree/master/example).
+[See the `example` directory for the demo's source code](https://github.com/janosh/gatsby-source-google-scholar/tree/master/example).
 
 ## Install
 
@@ -37,7 +37,7 @@ module.exports = {
 }
 ```
 
-Specify the metadata you need in a GraphQL query. Here's everything that's available.
+Specify the metadata you need in a GraphQL query. Here's everything available.
 
 ```graphql
 {
@@ -152,4 +152,4 @@ Here's an example of the data you'll get.
 
 ## Known Issues
 
-The HTTP response received from `request` seems to break HTML entity encoding. As a result some special characters (like German umlauts) are currently not displayed correctly. Will hopefully be fixed soon. PRs welcome!
+The HTTP response received from `request` seems to break HTML entity encoding. As a result some special characters (like German umlauts) are currently not displayed correctly. PRs welcome!
