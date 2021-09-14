@@ -24,7 +24,6 @@ exports.sourceNodes = async (
       content: JSON.stringify(pub),
       contentDigest: createContentDigest(pub),
       description: nodeInternalDescription(query),
-      query,
     },
   })
 
