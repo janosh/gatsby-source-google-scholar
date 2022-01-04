@@ -131,9 +131,7 @@ export default IndexPage
 export const query = graphql`
   {
     plugin: sitePlugin(name: { eq: "gatsby-source-google-scholar" }) {
-      ops: pluginOptions {
-        queries
-      }
+      ops: pluginOptions
     }
     pubs: allGoogleScholar {
       nodes {

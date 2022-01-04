@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://svgshare.com/i/AKz.svg" height="150px" alt="gatsby-source-google-scholar">
+  <img src="https://github.com/janosh/gatsby-source-google-scholar/blob/main/gatsby-source-google-scholar.svg" height="150px" alt="gatsby-source-google-scholar">
 </p>
 
 # [gatsby-source-google-scholar](https://gatsbyjs.org/packages/gatsby-source-google-scholar)
@@ -60,9 +60,6 @@ Specify the metadata you need in a GraphQL query. Here's everything available.
       citedByUrl
       relatedUrl
       allVersionsUrl
-      internal {
-        query
-      }
     }
   }
 }

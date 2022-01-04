@@ -5,17 +5,17 @@
   "version": "1.0.0",
   "author": "Janosh Riebesell",
   "dependencies": {
-    "babel-plugin-styled-components": "^1.10.6",
-    "gatsby": "^2.18.11",
-    "gatsby-plugin-styled-components": "^3.1.16",
-    "gatsby-remark-prismjs": "^3.3.27",
-    "gatsby-source-filesystem": "^2.1.42",
-    "gatsby-transformer-remark": "^2.6.42",
+    "babel-plugin-styled-components": "^2.0.2",
+    "gatsby": "^4.4.0",
+    "gatsby-plugin-styled-components": "^5.4.0",
+    "gatsby-remark-prismjs": "^6.4.0",
+    "gatsby-source-filesystem": "^4.4.0",
+    "gatsby-transformer-remark": "^5.4.0",
     "prismjs": "^1.17.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "styled-components": "^4.4.1",
-    "styled-icons": "^9.0.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "styled-components": "^5.3.3",
+    "styled-icons": "^10.45.0"
   },
   "keywords": [
     "gatsby",
