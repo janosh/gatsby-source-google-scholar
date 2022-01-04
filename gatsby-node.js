@@ -24,15 +24,14 @@ exports.sourceNodes = async (
       content: JSON.stringify(pub),
       contentDigest: createContentDigest(pub),
       description: nodeInternalDescription(query),
-      query,
     },
   })
 
   await Promise.all(options.queries.map(query => scraper.search(query)))
     .then(responses =>
-      responses.forEach((response, index) =>
+      responses.forEach((response) =>
         response.results.forEach(result =>
-          createNode(processPub(result, options.queries[index]))
+          createNode(processPub(result))
         )
       )
     )
