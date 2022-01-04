@@ -29,9 +29,9 @@ exports.sourceNodes = async (
 
   await Promise.all(options.queries.map(query => scraper.search(query)))
     .then(responses =>
-      responses.forEach((response, index) =>
+      responses.forEach((response) =>
         response.results.forEach(result =>
-          createNode(processPub(result, options.queries[index]))
+          createNode(processPub(result))
         )
       )
     )
